@@ -5,15 +5,25 @@ class Point {
   constructor(x, y) {
     this.x = x;
     this.y = y;
+    this.color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    console.log(this.color);
   }
 }
 
-const sizeInput = document.getElementById("Tsize");
+const sizeInput = document.getElementById("sizeInput");
 
-let size = document.getElementById("Tsize").value;
+let size = document.getElementById("sizeInput").value;
 
 sizeInput.addEventListener("change", (event) => {
   size = event.target.value;
+});
+
+const stepInput = document.getElementById("stepInput");
+
+let step = document.getElementById("stepInput").value;
+
+stepInput.addEventListener("change", (event) => {
+  step = event.target.value;
 });
 
 let cursor = new Point(randomPos().x, randomPos().y);
@@ -33,12 +43,10 @@ corners.forEach((corner) => {
 });
  */
 function animate() {
-  size = document.getElementById("Tsize").value;
-
   let target = corners[Math.floor(Math.random() * corners.length)];
-  cursor.x = (cursor.x + target.x) / 2;
-  cursor.y = (cursor.y + target.y) / 2;
-  ctx.fillStyle = "#70a7db";
+  cursor.x = (cursor.x + target.x) * step;
+  cursor.y = (cursor.y + target.y) * step;
+  ctx.fillStyle = target.color;
   ctx.beginPath();
   ctx.arc(cursor.x, cursor.y, size, 0, Math.PI * 2);
   ctx.closePath();

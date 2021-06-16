@@ -8,7 +8,7 @@ body {
 }
 #content {
   background: #fdfeff;
-  max-width: 800px;
+  max-width: 1000px;
   padding: 40px;
   margin: auto;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03), 0 2px 2px rgba(0, 0, 0, 0.03), 0 4px 4px rgba(0, 0, 0, 0.03), 0 8px 8px rgba(0, 0, 0, 0.03), 0 16px 16px rgba(0, 0, 0, 0.03);
@@ -17,8 +17,8 @@ h1 {
   font-family: "Roboto Slab", serif;
 }
 canvas {
-  width: 650px;
-  height: 500px;
+  width: 850px;
+  height: 850px;
   border: 2px solid black;
   border-right: none;
   box-sizing: border-box;
@@ -43,9 +43,8 @@ button:hover {
 
 .controls {
   border: 2px solid black;
-  border-left: ;
   box-sizing: border-box;
-  height: 500px;
+  height: 850px;
   width: 150px;
   background: #f0f4f7;
   float: right;
@@ -64,8 +63,10 @@ p {
 
 nav {
   font-size: 24px;
-  width: 800px;
-  padding: 20px 40px;
+  width: 1000px;
+  padding: 0 40px;
+  line-height: 60px;
+  height: 60px;
   background: #fdfeff;
   margin: auto;
   position: sticky;
@@ -73,7 +74,23 @@ nav {
   font-family: "Roboto Slab", serif;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03), 0 2px 2px rgba(0, 0, 0, 0.03), 0 4px 4px rgba(0, 0, 0, 0.03), 0 8px 8px rgba(0, 0, 0, 0.03), 0 16px 16px rgba(0, 0, 0, 0.03);
 }
-
+.links {
+  float: right;
+  font-size: 16px;
+  line-height: 60px;
+}
+a {
+  text-decoration: none;
+  color: #000000;
+  margin: 0 8px;
+}
+.active,
+a:hover {
+  color: #70a7db;
+}
+output {
+  float: right;
+}
 .slider {
   -webkit-appearance: none;
   width: 100%;

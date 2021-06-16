@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav>Canvas Land</nav>
+    <nav>
+      Canvas Land
+      <span class="links">
+        <a href="/" class="active">Sierpiński Triangle</a> | <a href="/mousetrail">Mousetrail</a> |
+        <a href="/slimemold">Slimemold</a>
+      </span>
+    </nav>
     <div id="content">
       <div class="section">
         <h1>Sierpiński Triangle</h1>
@@ -21,18 +27,24 @@
         <div class="controls">
           <button onclick="start()">Start</button>
           <button onclick="reset()">Reset</button>
-          <label for="Tsize">Point Size</label>
-          <input type="range" id="Tsize" value="2" min="1" max="5" class="slider" />
+          <form oninput="size.value=sizeInput.value">
+            <label>Point Size <output id="size" name="size" for="sizeInput">2</output></label>
+            <input type="range" id="sizeInput" name="sizeInput" min="1" max="5" value="2" class="slider" />
+          </form>
+          <form oninput="step.value=stepInput.value">
+            <label for="stepInput">Step Size <output id="step" name="step" for="stepInput">0.5</output></label>
+            <input type="range" id="stepInput" name="stepInput" value="0.5" step="0.1" min="0.1" max="0.9" class="slider" />
+          </form>
         </div>
-        <canvas id="canvas1" width="650" height="500"></canvas>
+        <canvas id="canvas1" width="850" height="850"></canvas>
       </div>
-      <div class="section">
+      <!-- <div class="section">
         <h1>Josephus Problem</h1>
         <div class="controls">
           <button onclick="start()">Start</button>
           <button onclick="reset()">Reset</button>
         </div>
-        <canvas id="canvas2" width="650" height="500"></canvas>
+        <canvas id="canvas3" width="650" height="500"></canvas>
       </div>
       <div class="section">
         <h1>The Goat Problem</h1>
@@ -40,9 +52,11 @@
           <button onclick="start()">Start</button>
           <button onclick="reset()">Reset</button>
         </div>
-        <canvas id="canvas3" width="650" height="500"></canvas>
-      </div>
+        <canvas id="canvas4" width="650" height="500"></canvas>
+      </div> -->
     </div>
     <script src="main.js"></script>
+    <!--     <script src="trail.js"></script>
+ -->
   </body>
 </html>
