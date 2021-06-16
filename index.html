@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Land</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>Canvas Land</nav>
+    <div id="content">
+      <div class="section">
+        <h1>Sierpiński Triangle</h1>
+        <p>
+          This one's a great example of how simple concepts can create impressive constructs. You could try this one out with pen and paper, it'd just take a while. There are three red dots that form
+          a triangle and a blue one, which will move during the simulation. Imagine a die being thrown, each red point representing two numbers of the die. The blue dot will move thorwards the thrown
+          point by exactly half of the distance between itself and the target point. Then the die's thrown again and the point moves again. Repeating this simple process for a while will result in a
+          perfect Sierpiński Triangle - A fractal of triangles, each containing a smaller version of itself.
+        </p>
+        <div class="controls">
+          <button onclick="start()">Start</button>
+          <button onclick="reset()">Reset</button>
+          <label for="Tsize">Point Size</label>
+          <input type="range" id="Tsize" value="2" min="1" max="5" class="slider" />
+        </div>
+        <canvas id="canvas1" width="650" height="500"></canvas>
+      </div>
+      <div class="section">
+        <h1>Josephus Problem</h1>
+        <div class="controls">
+          <button onclick="start()">Start</button>
+          <button onclick="reset()">Reset</button>
+        </div>
+        <canvas id="canvas2" width="650" height="500"></canvas>
+      </div>
+      <div class="section">
+        <h1>The Goat Problem</h1>
+        <div class="controls">
+          <button onclick="start()">Start</button>
+          <button onclick="reset()">Reset</button>
+        </div>
+        <canvas id="canvas3" width="650" height="500"></canvas>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
