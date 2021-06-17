@@ -5,26 +5,7 @@ body {
   background: #f0f4f7;
   margin: 0;
   font-family: "Roboto", sans-serif;
-}
-#content {
-  background: #fdfeff;
-  max-width: 1000px;
-  padding: 40px;
-  margin: auto;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03), 0 2px 2px rgba(0, 0, 0, 0.03), 0 4px 4px rgba(0, 0, 0, 0.03), 0 8px 8px rgba(0, 0, 0, 0.03), 0 16px 16px rgba(0, 0, 0, 0.03);
-}
-h1 {
-  font-family: "Roboto Slab", serif;
-}
-canvas {
-  width: 850px;
-  height: 850px;
-  border: 2px solid black;
-  border-right: none;
-  box-sizing: border-box;
-  background-image: url("glarner.jpeg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  overflow: hidden;
 }
 button {
   box-sizing: border-box;
@@ -44,27 +25,13 @@ button:hover {
   color: #fdfeff;
 }
 
-.controls {
-  border: 2px solid black;
-  box-sizing: border-box;
-  height: 850px;
-  width: 150px;
-  background: #f0f4f7;
-  float: right;
-  padding: 12px;
-}
-.section {
-  padding-bottom: 48px;
-  margin-bottom: 24px;
-  border-bottom: 1px solid #c1c8ce;
-}
-
 p {
   text-align: justify;
   text-justify: inter-word;
 }
 
 nav {
+  position: absolute;
   font-size: 24px;
   width: 1000px;
   padding: 0 40px;
@@ -72,10 +39,14 @@ nav {
   height: 60px;
   background: #fdfeff;
   margin: auto;
-  position: sticky;
-  top: 0;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: "Roboto Slab", serif;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03), 0 2px 2px rgba(0, 0, 0, 0.03), 0 4px 4px rgba(0, 0, 0, 0.03), 0 8px 8px rgba(0, 0, 0, 0.03), 0 16px 16px rgba(0, 0, 0, 0.03);
+  transition: 0.2s;
+}
+nav:hover {
 }
 .links {
   float: right;
