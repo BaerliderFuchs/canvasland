@@ -22,6 +22,9 @@ canvas {
   border: 2px solid black;
   border-right: none;
   box-sizing: border-box;
+  background-image: url("glarner.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 button {
   box-sizing: border-box;
