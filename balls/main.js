@@ -1,6 +1,7 @@
 let settings = {
   amount: 100,
   speed: 2,
+  interval: 20000000,
 };
 // an array to add multiple cells
 let cells = [];
@@ -10,10 +11,17 @@ let flakes = [];
 class Cell {
   // setting the co-ordinates, radius and the
   // speed of a cell in both the co-ordinates axes.
-  constructor() {
-    this.x = random(0, width);
-    this.y = random(0, height);
+  constructor(x, y) {
+    if (x == null) {
+      this.x = random(0, width);
+      this.y = random(0, height);
+    } else {
+      this.x = x;
+      this.y = y;
+    }
+
     this.size = 10;
+    this.consumed = 0;
     this.color = "#" + Math.floor(Math.random() * 16777215).toString(16);
     this.angle = Math.floor(Math.random() * 360) * (Math.PI / 180);
   }
@@ -56,16 +64,18 @@ class Cell {
     cells.forEach((cell, i) => {
       if (cell == this) return;
       let dis = dist(this.x, this.y, cell.x, cell.y);
-      if (dis <= 100) {
+      if (dis <= 100 + this.size / 2) {
         if (this.size > cell.size) {
           this.angle = Math.atan2(cell.y - this.y, cell.x - this.x);
           stroke("rgba(255,255,255,0.4)");
           line(this.x, this.y, cell.x, cell.y);
 
-          if (dis <= this.size / 2 - cell.size) {
+          if (dis <= this.size / 2 - cell.size / 3) {
             this.size += cell.size;
+            this.consumed += cell.consumed + 1;
+            console.log(this.consumed);
             cells.splice(i, 1);
-            return;
+            if (this.size >= 100) this.explode();
           }
         }
         if (this.size < cell.size) {
@@ -74,12 +84,25 @@ class Cell {
       }
     });
   }
+
+  explode() {
+    cells.splice(cells.indexOf(this), 1);
+    for (let i = 0; i < this.consumed; i++) {
+      cells.push(new Cell(this.x, this.y));
+    }
+    console.log(cells.length);
+  }
 }
 
 class Flake {
   constructor(x, y) {
-    this.x = x;
-    this.y = y;
+    if (x == null) {
+      this.x = random(0, width);
+      this.y = random(0, height);
+    } else {
+      this.x = x;
+      this.y = y;
+    }
   }
 
   createFlake() {
@@ -94,7 +117,7 @@ function setup() {
   // create gui
   let gui = new dat.GUI();
   gui.add(settings, "amount", 1, 1000);
-  gui.add(settings, "speed", 1, 10);
+  gui.add(settings, "speed", 1, 20);
 
   for (let i = 0; i < settings.amount; i++) {
     cells.push(new Cell());
@@ -103,6 +126,7 @@ function setup() {
 
 function draw() {
   background("rgba(0,0,0,0.1)");
+  if (frameCount % (settings.interval * 30) == 0) flakes.push(new Flake());
   cells.forEach((cell, i) => {
     cell.createCell();
     cell.findFlake();
