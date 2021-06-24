@@ -4,7 +4,11 @@ const ctx = canvas.getContext("2d");
 const DRAW_LINES = true;
 
 let amount = 250;
+<<<<<<< HEAD
 let speed = 2;
+=======
+let speed = 1;
+>>>>>>> f01ac18d07bdf84b123707cbf2cfbb91e7900ba3
 let size = 3;
 
 let agents = [];
@@ -13,6 +17,7 @@ let foods = [];
 
 let frameCounter = 0;
 
+<<<<<<< HEAD
 let colors = [
   "rgb(0,255,0)",
   "rgb(255,0,0)",
@@ -22,13 +27,23 @@ let colors = [
 
 class Agent {
   constructor(x,y) {
+=======
+let colors = ["rgb(0,255,0)", "rgb(255,0,0)", "rgb(0,0,255)"];
+
+class Agent {
+  constructor(x, y) {
+>>>>>>> f01ac18d07bdf84b123707cbf2cfbb91e7900ba3
     if (x == null) {
       let position = { x: Math.random() * canvas.width, y: Math.random() * canvas.height };
       this.x = position.x;
       this.y = position.y;
     } else {
       this.x = x;
+<<<<<<< HEAD
       this.y = y
+=======
+      this.y = y;
+>>>>>>> f01ac18d07bdf84b123707cbf2cfbb91e7900ba3
     }
     this.kills = 0;
     this.size = size;
@@ -42,14 +57,22 @@ class Agent {
 }
 
 class Food {
+<<<<<<< HEAD
   constructor(x,y) {
+=======
+  constructor(x, y) {
+>>>>>>> f01ac18d07bdf84b123707cbf2cfbb91e7900ba3
     if (x == null) {
       let position = { x: Math.random() * canvas.width, y: Math.random() * canvas.height };
       this.x = position.x;
       this.y = position.y;
     } else {
       this.x = x;
+<<<<<<< HEAD
       this.y = y
+=======
+      this.y = y;
+>>>>>>> f01ac18d07bdf84b123707cbf2cfbb91e7900ba3
     }
   }
 }
@@ -77,13 +100,13 @@ function animate() {
     ctx.arc(food.x, food.y, size, 0, Math.PI * 2);
     ctx.closePath();
     ctx.fill();
-  })
+  });
 
   agents.forEach((agent, agentIndex) => {
     agent = moveAgent(agent);
 
     drawAgent(agent);
-/*     ctx.fillStyle = agent.sensor.color;
+    /*     ctx.fillStyle = agent.sensor.color;
     ctx.beginPath();
     ctx.arc(agent.sensor.x, agent.sensor.y, 40, agent.angle + degToRad(-45), agent.angle + degToRad(45));
     ctx.lineTo(agent.sensor.x, agent.sensor.y);
@@ -95,7 +118,7 @@ function animate() {
         const dx = agent.sensor.x - otherAgent.x;
         const dy = agent.sensor.y - otherAgent.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-                /*         if (distance < 40) {
+        /*         if (distance < 40) {
           agent.sensor.color = "rgba(255,0,0,0.3)";
           ctx.beginPath();
           ctx.strokeStyle = "#ffffffff";
@@ -114,7 +137,7 @@ function animate() {
       const distance = Math.sqrt(dx * dx + dy * dy);
       if (distance < 100) {
         if (agent.size > otherAgent.size) {
-          agent.angle =  Math.atan2(otherAgent.y - agent.y, otherAgent.x - agent.x);
+          agent.angle = Math.atan2(otherAgent.y - agent.y, otherAgent.x - agent.x);
           if (DRAW_LINES) {
             ctx.beginPath();
             ctx.strokeStyle = agent.color;
@@ -124,24 +147,21 @@ function animate() {
             ctx.stroke();
             ctx.closePath();
           }
-        } 
+        }
         if (agent.size < otherAgent.size) {
-          agent.angle =  Math.atan2(otherAgent.y - agent.y, otherAgent.x - agent.x) - degToRad(180);
+          agent.angle = Math.atan2(otherAgent.y - agent.y, otherAgent.x - agent.x) - degToRad(180);
         }
         if (distance < agent.size && agent.size > otherAgent.size) {
-          agents.splice(index, 1)
+          agents.splice(index, 1);
           agent.kills = agent.kills + otherAgent.kills + 1;
-          agent.size += otherAgent.size/2
+          agent.size += otherAgent.size / 2;
         }
-
-        
-
       }
     });
     if (agent.size > 60) {
       agents.splice(agentIndex, 1);
       for (let i = 0; i < agent.kills; i++) {
-        agents.push(new Agent(agent.x, agent.y))
+        agents.push(new Agent(agent.x, agent.y));
       }
     }
   });
@@ -169,24 +189,24 @@ function drawAgent(agent) {
 }
 
 function moveAgent(agent) {
-foods.forEach((food, index) => {
-  const dx = agent.x - food.x;
-  const dy = agent.y - food.y;
-  const distance = Math.sqrt(dx * dx + dy * dy);
-  if (distance < 100) {
-    agent.angle =  Math.atan2(food.y - agent.y, food.x - agent.x);
-    if (distance < agent.size) {
-      foods.splice(index, 1);
-      agent.size += 3;
+  foods.forEach((food, index) => {
+    const dx = agent.x - food.x;
+    const dy = agent.y - food.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance < 100) {
+      agent.angle = Math.atan2(food.y - agent.y, food.x - agent.x);
+      if (distance < agent.size) {
+        foods.splice(index, 1);
+        agent.size += 3;
+      }
     }
-  }
-});
+  });
 
   direction = angleToDir(agent.angle);
 
   if (agent.x > canvas.width - agent.size) {
     direction.x = -Math.abs(direction.x);
-    agent.x = canvas.width - agent.size
+    agent.x = canvas.width - agent.size;
   }
   if (agent.x < 0 + agent.size) {
     direction.x = Math.abs(direction.x);
@@ -198,7 +218,7 @@ foods.forEach((food, index) => {
   }
   if (agent.y < 0 + agent.size) {
     direction.y = Math.abs(direction.y);
-    agent.y = 0 + agent.size
+    agent.y = 0 + agent.size;
   }
 
   agent.angle = dirToAngle(direction.x, direction.y);
@@ -228,22 +248,12 @@ function getStartingPosition() {
   }
 }
 
-
-function addCorner(event) {
-  
-}
-
+function addCorner(event) {}
 
 canvas.addEventListener("mousedown", function (e) {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
 
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-  
-  
-
-  
-      foods.push(new Food(x,y))
-
-
+  foods.push(new Food(x, y));
 });
