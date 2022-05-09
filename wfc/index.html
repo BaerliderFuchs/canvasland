@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Land</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div style="display:flex; align-items:flex-start;">
+      <table id="tbl"></table>
+      <div>
+        <pre style=" margin:0px 0px 0px 10px;">let rule_matrix = [
+      ['L','L','S','L'],
+      ['L','L','S','L'],
+      ['L','L','S','L'],
+      ['L','C','C','L'],
+      ['C','S','S','C'],
+      ['S','S','S','S'],
+      ['S','S','S','S'],
+    ];</pre>
+        <center style="margin-top:10px;">
+          <button onClick="Run()">Generate</button>
+        </center>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+    <script src="helper.js"></script>
+    <script src="main.js"></script>
+    <script src="../dat.gui.min.js"></script>
+    <!--     <script src="trail.js"></script>
+ -->
+  </body>
+</html>
+
+
