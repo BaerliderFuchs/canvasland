@@ -32,6 +32,9 @@ class Agent {
   }
 
   draw() {
+    translate(width / 2, height / 2);
+   rotate(PI / 180 * 45);
+   imageMode(CENTER);
     image(images[this.type], this.x - SIZE/2, this.y - SIZE/2, SIZE, SIZE);
   }
 
