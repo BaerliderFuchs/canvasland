@@ -17,6 +17,7 @@ class Agent {
     }
     this.angle = Math.floor(Math.random() * 360) * (Math.PI / 180);
     this.speed = SPEED
+    this.size = SIZE
 
     switch (Math.floor(Math.random() * 3)+1) {
       case 1:
@@ -32,10 +33,11 @@ class Agent {
   }
 
   draw() {
-    translate(width / 2, height / 2);
-   rotate(PI / 180 * 45);
-   imageMode(CENTER);
-    image(images[this.type], this.x - SIZE/2, this.y - SIZE/2, SIZE, SIZE);
+    translate(this.x, this.y);
+    rotate(this.angle - 90 * PI/180);
+    image(images[this.type], 0, 0, this.size, this.size);
+    rotate(-(this.angle - 90 * PI/180));
+    translate(-(this.x), -(this.y));
   }
 
   move() {
@@ -86,7 +88,8 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
+  imageMode(CENTER);
+  
   for (let i = 0; i < AMOUNT; i++) {
     agents.push(new Agent())    
   }
